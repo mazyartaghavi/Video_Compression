@@ -1,0 +1,10 @@
+import torch.nn.functional as F
+
+def psnr(x, y):
+    mse = F.mse_loss(x, y)
+    return 10 * torch.log10(1 / mse)
+
+def run_ablation(disable_rl=False, disable_quantum=False):
+    # systematically remove modules
+    pass
+
