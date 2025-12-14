@@ -1,0 +1,8 @@
+# src/optimization/rdl_solver.py
+import numpy as np
+
+def solve_rdl(distortion, rate, latency, lam, mu):
+    """
+    Classical constrained optimization step
+    """
+    return distortion + lam * rate + mu * latency
