@@ -1,0 +1,4 @@
+class QuantumBackend:
+    def run(self, cost_matrix):
+        # Placeholder for real quantum hardware
+        return cost_matrix.argmin()
