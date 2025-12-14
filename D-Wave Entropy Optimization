@@ -1,0 +1,7 @@
+# src/quantum/dwave_entropy_annealing.py
+from dwave.system import EmbeddingComposite, DWaveSampler
+
+def optimize_entropy(bqm):
+    sampler = EmbeddingComposite(DWaveSampler())
+    sampleset = sampler.sample(bqm, num_reads=100)
+    return sampleset.first.sample
