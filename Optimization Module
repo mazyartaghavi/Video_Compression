@@ -1,0 +1,8 @@
+import cvxpy as cp
+
+def solve_rdl(distortion, rate, latency, lambda_, mu_):
+    q = cp.Variable()
+    objective = cp.Minimize(distortion + lambda_ * rate + mu_ * latency)
+    problem = cp.Problem(objective, [q >= 0])
+    problem.solve()
+    return q.value
