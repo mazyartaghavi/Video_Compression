@@ -1,0 +1,16 @@
+# src/quantum/qiskit_motion_estimation.py
+from qiskit import Aer, QuantumCircuit, execute
+import numpy as np
+
+def quantum_motion_search(candidates):
+    n = int(np.ceil(np.log2(len(candidates))))
+    qc = QuantumCircuit(n)
+    qc.h(range(n))
+    qc.measure_all()
+
+    backend = Aer.get_backend("qasm_simulator")
+    result = execute(qc, backend, shots=1024).result()
+    counts = result.get_counts()
+
+    best = max(counts, key=counts.get)
+    return candidates[int(best, 2) % len(candidates)]
