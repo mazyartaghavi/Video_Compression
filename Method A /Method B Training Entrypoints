@@ -7,3 +7,9 @@ def train():
 
 if __name__ == "__main__":
     train()
+
+
+# src/experiments/train_method_b.py
+def hybrid_update(theta, w, zeta):
+    # Joint descent placeholder
+    return theta, w, zeta
