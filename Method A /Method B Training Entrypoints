@@ -1,0 +1,9 @@
+# src/experiments/train_method_a.py
+from rl.ppo_agent import CompressionPPO
+
+def train():
+    agent = CompressionPPO(env=None)  # env abstraction
+    agent.update()
+
+if __name__ == "__main__":
+    train()
