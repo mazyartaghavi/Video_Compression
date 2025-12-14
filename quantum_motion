@@ -1,0 +1,8 @@
+from .backend import QuantumBackend
+
+class QuantumMotionEstimator:
+    def __init__(self):
+        self.backend = QuantumBackend()
+
+    def estimate(self, candidates):
+        return self.backend.run(candidates)
