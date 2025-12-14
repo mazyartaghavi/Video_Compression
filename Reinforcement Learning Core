@@ -1,0 +1,20 @@
+# src/rl/ppo_agent.py
+import torch
+from stable_baselines3 import PPO
+
+class CompressionPPO:
+    def __init__(self, env):
+        self.model = PPO(
+            "MlpPolicy",
+            env,
+            learning_rate=3e-5,
+            gamma=0.97,
+            verbose=1
+        )
+
+    def act(self, state):
+        action, _ = self.model.predict(state)
+        return action
+
+    def update(self, timesteps=2048):
+        self.model.learn(total_timesteps=timesteps)
