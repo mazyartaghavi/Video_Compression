@@ -1,0 +1,15 @@
+from models.encoder import VideoEncoder
+from models.decoder import VideoDecoder
+from rl.policy import CompressionPolicy
+from rl.ppo import PPOAgent
+
+encoder = VideoEncoder()
+decoder = VideoDecoder()
+policy = CompressionPolicy(state_dim=128, action_dim=10)
+agent = PPOAgent(policy)
+
+for epoch in range(epochs):
+    state = get_state()
+    action = policy(state)
+    loss = compute_loss(action)
+    agent.update(loss)
