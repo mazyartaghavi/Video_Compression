@@ -1,0 +1,13 @@
+import torch
+import cv2
+import numpy as np
+
+def generate_saliency(policy_net, frame_tensor):
+    frame_tensor.requires_grad = True
+    bitrate = policy_net(frame_tensor)
+    bitrate.backward()
+
+    saliency = frame_tensor.grad.abs().mean(dim=1).cpu().numpy()
+    saliency = cv2.GaussianBlur(saliency[0], (11,11), 0)
+    saliency = (saliency - saliency.min()) / (saliency.max() - saliency.min())
+    return saliency
