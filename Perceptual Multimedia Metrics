@@ -1,0 +1,14 @@
+import torch
+import lpips
+
+class PerceptualEvaluator:
+    def __init__(self, device="cuda"):
+        self.lpips_fn = lpips.LPIPS(net='alex').to(device)
+        self.device = device
+
+    def compute_lpips(self, ref, rec):
+        ref = ref.to(self.device)
+        rec = rec.to(self.device)
+        with torch.no_grad():
+            score = self.lpips_fn(ref, rec)
+        return score.mean().item()
