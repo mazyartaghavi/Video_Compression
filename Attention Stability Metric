@@ -1,0 +1,9 @@
+import numpy as np
+
+def attention_stability(att_maps):
+    """
+    Measures variance of attention maps over time.
+    Lower variance = higher interpretability.
+    """
+    stacked = np.stack(att_maps)
+    return np.mean(np.var(stacked, axis=0))
