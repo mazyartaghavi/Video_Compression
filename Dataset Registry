@@ -1,0 +1,21 @@
+datasets:
+  - name: EndoVis2018
+    modality: Endoscopic Surgery
+    resolution: 1920x1080
+    frame_rate: 30
+    clinical_context: Minimally invasive surgery
+    usage: Training / Evaluation
+
+  - name: Cholec80
+    modality: Laparoscopic Surgery
+    resolution: 854x480
+    frame_rate: 25
+    clinical_context: Gallbladder removal
+    usage: Generalization
+
+  - name: RoboticSurgerySim
+    modality: Robotic Teleoperation
+    resolution: 1920x1080
+    frame_rate: 60
+    clinical_context: Tele-operated robotic surgery
+    usage: Stress testing
