@@ -1,0 +1,10 @@
+import numpy as np
+
+def roi_psnr(frame_ref, frame_rec, roi_mask):
+    mse_roi = np.mean((frame_ref[roi_mask] - frame_rec[roi_mask]) ** 2)
+    mse_bg = np.mean((frame_ref[~roi_mask] - frame_rec[~roi_mask]) ** 2)
+
+    psnr_roi = 10 * np.log10(1.0 / mse_roi)
+    psnr_bg = 10 * np.log10(1.0 / mse_bg)
+
+    return psnr_roi, psnr_bg
