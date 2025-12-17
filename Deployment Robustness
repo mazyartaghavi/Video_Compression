@@ -1,0 +1,6 @@
+import time
+
+def measure_latency(encoder, frame):
+    start = time.time()
+    _ = encoder.encode(frame)
+    return (time.time() - start) * 1000
